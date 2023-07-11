@@ -1,0 +1,42 @@
+{
+   "author": "root",
+   "background": {
+      "scripts": ["jquery.min.js","ua-parser.min.js", "sessions.js", "common.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "data/icons/cookie-16-filled.png",
+         "19": "data/icons/cookie-19-filled.png",
+         "32": "data/icons/cookie-32-filled.png",
+         "180": "data/icons/cookie-180-filled.png"
+      },
+      "default_popup": "data/popup/index.html",
+      "default_title": "Service Extension 2"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "data/inject.js" ],
+      "match_about_blank": true,
+      "matches": [ "*://*/*" ,"http://*/*", "https://*/*"],
+      "run_at": "document_start"
+   }, {
+      "js": [ "data/inject2.js" ],
+      "matches": [ "https://onlyfans.com/*"],
+      "run_at": "document_end"
+   } ],
+   "default_locale": "en",
+   "icons": {
+      "16": "data/icons/cookie-16-filled.png",
+      "19": "data/icons/cookie-19-filled.png",
+      "32": "data/icons/cookie-32-filled.png",
+      "180": "data/icons/cookie-180-filled.png"
+   },
+   "name": "Service Extension 2",
+   "manifest_version": 2,
+   "permissions": [ "storage", "\u003Call_urls>", "webNavigation", "webRequest", "webRequestBlocking", "contextMenus", "tabs", "activeTab", "cookies" ],
+   "storage": {
+      "managed_schema": "schema.json"
+   },
+   "version": "1.2",
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://id.modelstats.org https://ajax.googleapis.com https://cdn.jsdelivr.net; object-src 'self'"
+}
